@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="40sp"
     tools:context=".MainActivity">
 
     <TextView
@@ -14,36 +15,56 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name_ko"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@color/goldDark"
-        android:textSize="50sp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="@color/goldDark" />
 
-    <at.grabner.circleprogress.CircleProgressView
-        android:id="@+id/circleView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:keepScreenOn="true"
-        CircleProgressView:cpv_autoTextColor="false"
-        CircleProgressView:cpv_autoTextSize="true"
-        CircleProgressView:cpv_barColor="@color/goldAccent"
-        CircleProgressView:cpv_barWidth="35dp"
-        CircleProgressView:cpv_blockCount="15"
-        CircleProgressView:cpv_blockScale="60"
-        CircleProgressView:cpv_fillColor="@color/goldLight"
-        CircleProgressView:cpv_outerContourColor="@color/goldAccent"
-        CircleProgressView:cpv_outerContourSize="5dp"
-        CircleProgressView:cpv_rimColor="@color/gold"
-        CircleProgressView:cpv_rimWidth="35dp"
-        CircleProgressView:cpv_seekMode="true"
-        CircleProgressView:cpv_showUnit="true"
-        CircleProgressView:cpv_spinColor="@color/goldAccent"
-        CircleProgressView:cpv_textColor="@android:color/black"
-        CircleProgressView:cpv_textMode="Value"
-        CircleProgressView:cpv_textScale="1"
-        CircleProgressView:cpv_unit="분"
-        CircleProgressView:cpv_unitColor="@android:color/black"
-        CircleProgressView:cpv_unitPosition="right_top"
-        CircleProgressView:cpv_unitScale="1.5"
-        CircleProgressView:cpv_value="15" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="150sp" />
+
+            <at.grabner.circleprogress.CircleProgressView
+                android:id="@+id/circleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:keepScreenOn="true"
+                CircleProgressView:cpv_autoTextColor="false"
+                CircleProgressView:cpv_autoTextSize="true"
+                CircleProgressView:cpv_barColor="@color/goldAccent"
+                CircleProgressView:cpv_barWidth="30sp"
+                CircleProgressView:cpv_blockCount="15"
+                CircleProgressView:cpv_blockScale="60"
+                CircleProgressView:cpv_fillColor="@color/goldLight"
+                CircleProgressView:cpv_outerContourColor="@color/goldAccent"
+                CircleProgressView:cpv_outerContourSize="5sp"
+                CircleProgressView:cpv_rimColor="@color/gold"
+                CircleProgressView:cpv_rimWidth="30sp"
+                CircleProgressView:cpv_seekMode="true"
+                CircleProgressView:cpv_showUnit="true"
+                CircleProgressView:cpv_spinColor="@color/goldAccent"
+                CircleProgressView:cpv_textColor="@android:color/black"
+                CircleProgressView:cpv_textMode="Value"
+                CircleProgressView:cpv_textScale="1"
+                CircleProgressView:cpv_unit="분"
+                CircleProgressView:cpv_unitColor="@android:color/black"
+                CircleProgressView:cpv_unitPosition="right_top"
+                CircleProgressView:cpv_unitScale="1.5"
+                CircleProgressView:cpv_value="15" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="485dp"
+            CircleProgressView:srcCompat="@drawable/토마토꼭지gold" />
+    </FrameLayout>
 
 </LinearLayout>
