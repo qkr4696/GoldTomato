@@ -9,25 +9,36 @@ class TomatoTimer {
     private boolean isTimerRunning = false;
     private CircleProgressView mCircleView;
     private boolean isGold = true;
-
+    private Timer mTimer;
+    
     TomatoTimer(CircleProgressView myCircleView){
         mCircleView = myCircleView;
+        mTimer = new Timer();
+       
     }
 
     boolean getIsTimerRunning(){
         return isTimerRunning;
     }
-    void startTimerTask() {
+        void startTimerTask() {
         stopTimerTask();
         isTimerRunning = true;
-        // 타이머를 구현하라.
-        int count = 0;
-        this.mCircleView.setValue((int)(floor((count)*10.0f/60.0f))/10.0f); // 현재 count의 값을 원형 타이머에 반영
+        private int count = 0;
+        mTimer.schedule(new WorkTask(), 0, 1000);
 
-        timerEnd();
+        public static class WorkTask extends TimerTask{
+            @Override
+            public void run(){
+                this.mCircleView.setValue((int)(floor((count)*10.0f/60.0f))/10.0f); // 현재 count의 값을 원형 타이머에 반영
+                count++;
+                if (count < (15 * 60) ){
+                    timerEnd();
+                }
+            }
+        }
     }
     private void stopTimerTask(){
-        //타이머를 멈추고 초기화한다
+        mTimer.cancel(); //타이머를 멈추고 초기화한다
     }
     private void suspendTimerTask(){
 
