@@ -2,7 +2,6 @@ package com.example.goldtomato;
 
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -31,11 +30,6 @@ public class MainActivity extends AppCompatActivity {
         mTomatoTimer = new TomatoTimer(mCircleView);
         linear_timer = findViewById(R.id.linearTimer);
         initialize_size();
-
-        mPendingIntent = PendingIntent.getActivity(MainActivity.this, 0,
-                new Intent(getApplicationContext(), MainActivity.class),
-                PendingIntent.FLAG_UPDATE_CURRENT
-        );
 
         mCircleView.setOnTouchListener(new View.OnTouchListener() {
             @Override

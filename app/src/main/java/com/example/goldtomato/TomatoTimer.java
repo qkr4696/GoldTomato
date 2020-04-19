@@ -1,5 +1,8 @@
 package com.example.goldtomato;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import at.grabner.circleprogress.CircleProgressView;
 
 import static java.lang.Math.floor;
@@ -10,35 +13,51 @@ class TomatoTimer {
     private CircleProgressView mCircleView;
     private boolean isGold = true;
     private Timer mTimer;
+    private WorkTask mTimerTask;
     
     TomatoTimer(CircleProgressView myCircleView){
         mCircleView = myCircleView;
         mTimer = new Timer();
-       
     }
 
     boolean getIsTimerRunning(){
         return isTimerRunning;
     }
-        void startTimerTask() {
+
+    void startTimerTask() {
         stopTimerTask();
         isTimerRunning = true;
-        private int count = 0;
-        mTimer.schedule(new WorkTask(), 0, 1000);
+        mTimerTask = new WorkTask();
+        mTimer.schedule(mTimerTask, 0, 1000);
+    }
 
-        public static class WorkTask extends TimerTask{
-            @Override
-            public void run(){
-                this.mCircleView.setValue((int)(floor((count)*10.0f/60.0f))/10.0f); // 현재 count의 값을 원형 타이머에 반영
-                count++;
-                if (count < (15 * 60) ){
-                    timerEnd();
-                }
-            }
+    class WorkTask extends TimerTask {
+        int count = 0;
+        @Override
+        public void run(){
+            count++;
+            if (count > (15 * 60) ){
+                timerEnd();
+           }
+            mCircleView.setValue((int)(floor((count)*10.0f/60.0f))/10.0f); // 현재 count의 값을 원형 타이머에 반영
         }
     }
+
+    // 처음부터 30초 테스트 vs ???시간을 줄이는??? 1초마다... 빠른 테스트 주기
+
+    // 어떤 버그가 날 수 있을까? -> 부등호 방향, 지난 버그 경험들을 떠올리면서
+    // 교재에 어떤 오류...
+    // 어떤 구조로 코드를 짜야할까?
+
+    // 디버깅
+    // 에러 코드 cancel, -> null cancel -> 중간중간에 프린트 문이나, Log.d()
+
     private void stopTimerTask(){
-        mTimer.cancel(); //타이머를 멈추고 초기화한다
+        if(mTimerTask != null)
+        {
+            mTimerTask.cancel(); //타이머를 멈추고 초기화한다
+            mTimerTask = null;
+        }
     }
     private void suspendTimerTask(){
 
